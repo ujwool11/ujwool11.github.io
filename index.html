@@ -3195,11 +3195,15 @@ function submitOrderToServer(name, phone, email, address, pincode, base64) {
 })
     .then(res => res.text())
     .then(text => {
-      console.log('RAW GAS RESPONSE:', text);
-      alert('RAW RESPONSE: ' + text);
+      // This keeps it hidden in the background for you, but invisible to customers
+      console.log('RAW GAS RESPONSE:', text); 
+      
+      // ALERT REMOVED FROM HERE
     })
     .catch(err => {
-      alert('FETCH ERROR: ' + (err.message || err));
+      // Optional: You might want to remove this alert too so customers don't see errors,
+      // or replace it with a nice on-screen message.
+      console.error('FETCH ERROR:', err);
     });
 }
 
