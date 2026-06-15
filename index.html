@@ -2276,7 +2276,7 @@
 
     <script>
       // AT THE TOP OF YOUR SCRIPT SECTION IN INDEX.HTML
-const GAS_URL = "https://script.google.com/macros/s/AKfycbyJeMY2MTa_e2T0xUJBnwO_CFV-OD3NaXEj6oMdF4iprGbO8y5zJvmT7VuFL-X-n4w9/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbwSZsf4sHBMf051BmVNU9BJsDhh5Ku0JqnPW8YpRv_gbYxqTMb4uJU9wO_pz_xtErGY/exec";
 
 
 
@@ -3182,10 +3182,14 @@ function submitOrderToServer(name, phone, email, address, pincode, base64) {
 
   fetch(GAS_URL, {
   method: 'POST',
+  credentials: 'omit', // Bypasses the Google multi-login bug
+  headers: {
+    'Content-Type': 'text/plain;charset=utf-8' // Bypasses the strict CORS preflight check
+  },
   body: JSON.stringify({
-    action:  'submitOrder',
-    token:   'UJW-SEC-2025-XK9',   // must match SECRET_TOKEN in Code.gs
-    hp:      '',                    // honeypot — always empty for real users
+    action: 'submitOrder',
+    token: 'UJW-SEC-2025-XK9',
+    hp: '',
     payload: payload
   })
 })
