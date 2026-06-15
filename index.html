@@ -3193,14 +3193,13 @@ function submitOrderToServer(name, phone, email, address, pincode, base64) {
     payload: payload
   })
 })
-    .then(res => res.json())
-    .then(res => {
-      if (!res || !res.success) {
-        alert('Error submitting order.');
-      }
+    .then(res => res.text())
+    .then(text => {
+      console.log('RAW GAS RESPONSE:', text);
+      alert('RAW RESPONSE: ' + text);
     })
     .catch(err => {
-      alert(err.message || 'Error submitting order.');
+      alert('FETCH ERROR: ' + (err.message || err));
     });
 }
 
