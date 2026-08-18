@@ -5295,7 +5295,7 @@ const totalAfterDiscount = subtotal - discountAmount;
 
 // Shipping logic: <1000 → flat ₹80, >=1000 → Free (display only)
 const shippingDisplay = totalAfterDiscount >= 1000 ? 'Free' : '₹80';
-const shippingAmount = 0; // numeric, still 0 — the ₹80 is collected separately after delivery, same as "On actuals" was
+const shippingAmount = 80; // numeric, still 0 — the ₹80 is collected separately after delivery, same as "On actuals" was
 
 const grandTotal = totalAfterDiscount + shippingAmount;
 
