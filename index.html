@@ -4044,7 +4044,7 @@ html {
     </div>
     <ul>
       <li onclick="openAboutUs()">About Us</li>
-      <li onclick="resetToHome(); scrollToSection('phase1')">Flagship Collections</li> 
+      <li onclick="resetToHome(); scrollToSection('phase1')">Phase 1 Products</li> 
       <li onclick="resetToHome(); scrollToSection('customized')">Customized Products</li>
       <li onclick="resetToHome(); scrollToSection('festival')">Rakhi Collection</li>
       <li onclick="openOffers()">Offers</li>
@@ -4078,8 +4078,8 @@ html {
   <div class="side-window">
     <div class="side-window-title">Current Offers</div>
     <div class="side-window-content">
-      <p> 1. <b>Flat 10% off</b> on Total Order <b>between INR 500 and INR 1000.</b> </p>
-      <p> 2. <b>Flat 20% off</b> on Total Order <b>above INR 1000.</b> </p>
+      <p> 1. <b>Flat 5% off</b> on Total Order <b>between INR 500 and INR 1000.</b> </p>
+      <p> 2. <b>Flat 10% off</b> on Total Order <b>above INR 1000.</b> </p>
       <p> 3. Enjoy Free Delivery on Total Order Value <b>above INR 1000.</b> </p>
     </div>
     <div class="side-window-close" onclick="closeSideWindow('offersOverlay')">Close</div>
@@ -4129,19 +4129,21 @@ html {
   </div>
   <div class="offers-bar-scroll" id="offersBarScroll">
 
+
+
     <div class="offer-card orange-offer">
-      <div class="offer-badge-tag">10% OFF</div>
+      <div class="offer-badge-tag">5% OFF</div>
       <div class="offer-card-text">
-        <strong>Flat 10% off</strong>
+        <strong>Flat 5% off</strong>
         On orders between ₹500 – ₹999<br>
         <span class="offer-sub">Automatically applied at checkout</span>
       </div>
     </div>
 
     <div class="offer-card green-offer">
-      <div class="offer-badge-tag">20% OFF</div>
+      <div class="offer-badge-tag">10% OFF</div>
       <div class="offer-card-text">
-        <strong>Flat 20% off</strong>
+        <strong>Flat 10% off</strong>
         On orders above ₹1000<br>
         <span class="offer-sub">Best deal — save more, shop more</span>
       </div>
@@ -4200,7 +4202,7 @@ html {
     <!-- Phase 1 -->
     <div class="section" id="phase1">
   <div class="section-title-wrapper">
-    <h2 class="section-title">🧶✨ Flagship Collection</h2>
+    <h2 class="section-title">🧶✨ Phase I Collection</h2>
   </div>
   <div id="phase1Grid" class="product-grid"></div>
 </div>
@@ -4271,7 +4273,7 @@ html {
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        We typically dispatch orders within 2–3 business days of payment confirmation. Delivery across India generally takes 5–8 business days depending on your location. Shipping charges are calculated on actuals for orders below ₹1000 and will need to be paid separately post successful delivery and customer satisfaction. For orders above ₹1000, we offer <strong>FREE delivery</strong> right to your doorstep! 🎁
+        We typically dispatch orders within 2–3 business days of payment confirmation. Delivery across India generally takes 5–8 business days depending on your location. Shipping charges are a flat ₹80 for orders below ₹1000. For orders above ₹1000, we offer <strong>FREE delivery</strong> right to your doorstep! 🎁
       </div>
     </div>
 
@@ -4574,7 +4576,7 @@ html {
 
     <script>
       // AT THE TOP OF YOUR SCRIPT SECTION IN INDEX.HTML
-const GAS_URL = "https://script.google.com/macros/s/AKfycbyWxW_W0wp4aj4hPdYP5qax3o1T2ZQ0YxL4vmxCBWumZlX2Yb_6c44ykoeT6jYyMHTn/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbz3MlcwscojnDvz1UaeaZGjnWWTkhgWFlTMRkyVrQ19eJCMUue5-aYik_KxsctY_yYJ/exec";
 
 
 
@@ -4590,7 +4592,7 @@ const GAS_URL = "https://script.google.com/macros/s/AKfycbyWxW_W0wp4aj4hPdYP5qax
 
 // Messages to show in the top banner, one after another
 const bannerMessages = [
-  'Rakhi Collection is now LIVE.',
+  'Phase 1 products are now LIVE.',
   'Handmade crochet, crafted with love at UJ Wool.',
   'Free shipping on total order value above ₹1000.',
   'Limited stock. Order your favourite crochet pieces today!'
@@ -5282,16 +5284,18 @@ minusBtn.onclick = function() {
   // Offer & shipping logic same as before
 // Offer logic (same as before)
 // Offer logic
+
+
 let discountPercent = 0;
-if (subtotal >= 500 && subtotal < 1000) discountPercent = 10;
-else if (subtotal >= 1000) discountPercent = 20;
+if (subtotal >= 500 && subtotal < 1000) discountPercent = 5;
+else if (subtotal >= 1000) discountPercent = 10;
 
 const discountAmount = subtotal * discountPercent / 100;
 const totalAfterDiscount = subtotal - discountAmount;
 
-// Shipping logic: <1000 → On actuals, >=1000 → Free (display only)
-const shippingDisplay = totalAfterDiscount >= 1000 ? 'Free' : 'On Actuals';
-const shippingAmount = 0; // numeric, still 0 in total
+// Shipping logic: <1000 → flat ₹80, >=1000 → Free (display only)
+const shippingDisplay = totalAfterDiscount >= 1000 ? 'Free' : '₹80';
+const shippingAmount = 0; // numeric, still 0 — the ₹80 is collected separately after delivery, same as "On actuals" was
 
 const grandTotal = totalAfterDiscount + shippingAmount;
 
